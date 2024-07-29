@@ -1,0 +1,68 @@
+# Hugo configuration file
+title: ECE 196
+
+# import hextra as module
+module:
+  imports:
+    - path: github.com/imfing/hextra
+
+markup:
+  # allow raw html
+  goldmark:
+    renderer:
+      unsafe: true
+
+  # enable hextra syntax highlight
+  highlight:
+    noClasses: false
+
+menu:
+  main:
+    - name: About
+      pageRef: /about
+      weight: 1
+    - name: Projects
+      pageRef: /projects
+      weight: 2
+    - name: Assignments
+      pageRef: /assignments
+      weight: 3
+    - name: Resources
+      pageRef: /additional-resources
+      weight: 4
+    - name: Search
+      weight: 5
+      params:
+        type: search
+    - name: GitHub
+      weight: 6
+      url: "https://github.com/ece-196"
+      params:
+        icon: github
+
+  sidebar:
+    - name: Get Help
+      params:
+        type: separator
+      weight: 1
+    - name: "Resources"
+      pageRef: "/additional-resources"
+      weight: 2
+    - name: "Tutors"
+      url: "/about/#tutors"
+      weight: 3
+
+params:
+  navbar:
+    displayTitle: true
+    displayLogo: false
+
+  footer:
+    displayCopyright: false
+    displayPoweredBy: false
+
+  editURL:
+    enable: false
+
+  page:
+    width: full
