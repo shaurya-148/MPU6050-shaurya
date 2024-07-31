@@ -17,8 +17,8 @@ We will be leaving CircuitPython in the pursuit of better understanding how good
 For this assignment, you have **two** options for how to proceed:
 
 {{< cards >}}
-  {{< card link="Arduino" title="arduino" image="images/arduino.png" >}}
-  {{< card link="Rust" title="rust" image="images/ferris.png" subtitle="This little guy is named Ferris :)" >}}
+  {{< card link="arduino" title="Arduino" image="images/arduino.png" >}}
+  {{< card link="rust" title="Rust" image="images/ferris.png" subtitle="This little guy is named Ferris :)" >}}
 {{< /cards >}}
 
 You may already be familiar with Arduino, as it is a very popular educational platform for introducing students to embedded systems. If
