@@ -57,7 +57,7 @@ On the DevBoard, the pin of the LED we will use is `17` (LED1).
 
 Here is the code:
 
-```c
+```cpp
 const int LED{17};
 
 void setup() {

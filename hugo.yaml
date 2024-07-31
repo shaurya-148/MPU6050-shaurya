@@ -42,8 +42,8 @@ menu:
     - name: "Resources"
       pageRef: "/additional-resources"
       weight: 2
-    - name: "Tutors"
-      url: "/about/#tutors"
+    - name: "Support"
+      url: "/support"
       weight: 3
 
 params:
