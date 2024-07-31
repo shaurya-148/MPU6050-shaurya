@@ -71,10 +71,6 @@ The resulting file structure should look something like:
   You can learn more about this structure [here](https://embassy.dev/book/#_project_structure).
 {{< /callout >}}
 
-{{< callout type="info" >}}
-  If you so desire: Inside `firmware/Cargo.toml`, you can rename your project by finding and replacing all occurances of `"devboard-rs-template"`.
-{{< /callout >}}
-
 ## Checkpoint
 
 Let's make sure all we've done so far is working properly.

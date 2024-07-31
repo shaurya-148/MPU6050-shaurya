@@ -17,7 +17,7 @@ languages! The ideals Rust holds dear are simply the good design practices of th
 in one programming language.
 
 {{< callout type="info" >}}
-  To help you on your journey, refer to the [resources](/additional-resources/rust) page.
+  To help you on your journey, refer to the [resources]({{< ref "/additional-resources/rust/#embedded" >}}) page.
 {{< /callout >}}
 
 ## Some Background
@@ -36,16 +36,16 @@ information as it is served. A very special Rust crate called **Embassy** utiliz
 for us to use.
 
 {{< callout type="info" >}}
-  More information on Embassy can be found on the [resources](/additional-resources/rust/#embedded) page.
+  More information on Embassy can be found on the [resources]({{< ref "/additional-resources/rust/#embedded" >}}) page.
 {{< /callout >}}
 
 [^1]: Languages that push the boundaries of programming with radical new archetypes.
 [^2]: Languages that employ multiple programming paradigms, i.e. functional, OOP, etc.
-[^3]: Design patterns ubiquitous for resulting in low-quality code.
-[^4]: Programs can be represented with FSTs, control flow can be encoded as types, a strong type system henceforth allows
+[^3]: Design patterns known for resulting in low-quality code.
+[^4]: Programs can be represented with **F**inite **S**tate **M**achines (FSM), control flow can be encoded as types, a strong type system henceforth allows
 a program's behavior to be bounded and thus analyzable at compile-time.
 [^5]: **R**esource **A**cquisition **I**s **I**nitialization (RAII). We bind resources to symbols, access to the resource
-is the same as accesss to the binding. Now symbolic access control represents resource access control.
+is the same as access to the binding. Now symbolic access control represents resource access control.
 [^6]: Cargo -- Rust's build tool -- is renowned for ease of use, performance, and reliability.
 [^7]: A first class citizen is a feature a language provides directly.
 A third class citizen is a feature *derived* from other primitives of the language.
