@@ -9,6 +9,15 @@ weight: 1
 
 To install rust, follow the instructions [here](https://www.rust-lang.org/tools/install).
 
+## Editor
+
+There are many editors to choose from, here's some:
+
+- [VSCode](https://code.visualstudio.com) (with the rust-analyzer extension)
+- [Zed](https://zed.dev) ✨
+- [RustRover](https://www.jetbrains.com/rust/) (if you like jetbrains)
+- Vim (with tree-sitter and rust-analyzer)
+
 ## Embedded Tools
 
 For ESP32s, we need to install ESP's tools.

@@ -1,7 +1,7 @@
 ---
 title: Submission
 type: docs
-next: assignments/ControlWithPython/
+next: assignments/SpinningAndBlinking/
 weight: 3
 ---
 

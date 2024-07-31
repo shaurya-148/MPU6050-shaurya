@@ -8,8 +8,6 @@ weight: 4
 
 In this assignment you will learn to create a **G**raphical **U**ser **I**nterface (GUI) to interact with a microcontroller.
 
----
-
 **You are faced with an important decision.**
 
 We will be leaving CircuitPython in the pursuit of better understanding how good -- production ready -- firmware is written.
