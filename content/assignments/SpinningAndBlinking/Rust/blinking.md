@@ -105,7 +105,7 @@ Next up we enable logging via the ESP32s JTAG[^8] controller.
 let timg0 = TimerGroup::new(peripherals.TIMG0, &clocks, None);
 ```
 
-Then we initialize the `G0` timer (which we can use to provide Embassy with a means for
+Then we initialize the 0th timer group (which we can use to provide Embassy with a means for
 keeping time).
 
 ```rust
