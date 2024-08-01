@@ -1,7 +1,7 @@
 ---
 title: Assembly
 type: docs
-prev: assignments/DevBoard/
+prev: assignments/dev-board/
 weight: 1
 ---
 

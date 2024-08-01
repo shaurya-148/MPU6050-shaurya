@@ -1,8 +1,8 @@
 ---
-title: VUMeter
+title: VU Meter
 type: docs
-prev: assignments/DevBoard/
-next: assignments/VUMeter/firmware
+prev: assignments/dev-board/
+next: assignments/vu-meter/firmware
 weight: 3
 ---
 

@@ -1,15 +1,15 @@
 ---
 title: Assignments
-next: assignments/LightShield/
+next: assignments/light-shield/
 toc: false
 ---
 
 All of the ECE 196 assignment instructions can be found here.
 
 {{< cards >}}
-  {{< card link="lightshield" title="LightShield" icon="light-bulb" >}}
-  {{< card link="devboard" title="DevBoard" icon="chip" >}}
-  {{< card link="vumeter" title="VUMeter" icon="chart-square-bar" >}}
-  {{< card link="spinningandblinking" title="SpinningAndBlinking" icon="cog" >}}
-  {{< card link="controlwithpython" title="ControlWithPython" icon="code" >}}
+  {{< card link="light-shield" title="Light Shield" icon="light-bulb" >}}
+  {{< card link="dev-board" title="DevBoard" icon="chip" >}}
+  {{< card link="vu-meter" title="VU Meter" icon="chart-square-bar" >}}
+  {{< card link="spinning-and-blinking" title="Spinning and Blinking" icon="code" >}}
+  {{< card link="full-stack" title="Full Stack" icon="wifi" >}}
 {{< /cards >}}

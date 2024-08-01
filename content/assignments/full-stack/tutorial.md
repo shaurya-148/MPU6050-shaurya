@@ -1,7 +1,7 @@
 ---
 title: Tutorial
 type: docs
-prev: assignments/ControlWithPython/
+prev: assignments/full-stack/
 weight: 1
 ---
 

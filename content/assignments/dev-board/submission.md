@@ -1,7 +1,7 @@
 ---
 title: Submission
 type: docs
-next: assignments/VUMeter/
+next: assignments/vu-meter/
 weight: 2
 ---
 

@@ -1,9 +1,16 @@
 ---
 title: Setup
 type: docs
-prev: assignments/SpinningAndBlinking/Rust
+prev: assignments/spinning-and-blinking/rust
 weight: 1
 ---
+
+{{< callout type="info" >}}
+  Ideally these steps would be omitted and a Docker image would be provided.
+  Unfortunately the environment we are setting up relies on USB access
+  which is currently unsupported on Apple Silicon. Learn more [here](https://github.com/docker/for-mac/issues/5263).
+{{< /callout >}}
+
 
 ## Install Rust
 

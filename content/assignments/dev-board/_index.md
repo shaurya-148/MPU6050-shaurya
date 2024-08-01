@@ -1,8 +1,8 @@
 ---
 title: DevBoard
 type: docs
-prev: assignments/LightShield/
-next: assignments/DevBoard/assembly
+prev: assignments/light-shield/
+next: assignments/dev-board/assembly
 weight: 2
 ---
 

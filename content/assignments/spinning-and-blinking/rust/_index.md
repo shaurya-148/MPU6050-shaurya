@@ -1,8 +1,8 @@
 ---
 title: Rust
 type: docs
-prev: assignments/SpinningAndBlinking/
-next: assignments/SpinningAndBlinking/Rust/setup
+prev: assignments/spinning-and-blinking/
+next: assignments/spinning-and-blinking/rust/setup
 weight: 2
 ---
 

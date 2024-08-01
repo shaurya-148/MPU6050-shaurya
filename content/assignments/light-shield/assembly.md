@@ -1,7 +1,7 @@
 ---
 title: Assembly
 type: docs
-prev: assignments/LightShield/
+prev: assignments/light-shield/
 weight: 1
 ---
 

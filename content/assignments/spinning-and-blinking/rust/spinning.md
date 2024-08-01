@@ -1,7 +1,7 @@
 ---
 title: Spinning
 type: docs
-prev: assignments/SpinningAndBlinking/Blinking
+prev: assignments/spinning-and-blinking/blinking
 weight: 3
 ---
 

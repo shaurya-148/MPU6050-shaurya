@@ -1,7 +1,7 @@
 ---
 title: Firmware
 type: docs
-prev: assignments/VUMeter/
+prev: assignments/vu-meter/
 weight: 1
 ---
 

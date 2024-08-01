@@ -1,7 +1,7 @@
 ---
 title: Quiz
 type: docs
-prev: assignments/ControlWithPython/tutorial
+prev: assignments/full-stack/tutorial
 weight: 2
 ---
 

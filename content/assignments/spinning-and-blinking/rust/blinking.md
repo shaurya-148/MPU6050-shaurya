@@ -1,7 +1,7 @@
 ---
 title: Blinking
 type: docs
-prev: assignments/SpinningAndBlinking/Rust/Setup
+prev: assignments/spinning-and-blinking/rust/setup
 weight: 2
 ---
 

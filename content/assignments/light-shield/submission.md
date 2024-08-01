@@ -1,7 +1,7 @@
 ---
 title: Submission
 type: docs
-next: assignments/DevBoard/
+next: assignments/dev-board/
 weight: 2
 ---
 

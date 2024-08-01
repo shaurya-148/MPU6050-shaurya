@@ -1,8 +1,8 @@
 ---
-title: SpinningAndBlinking
+title: Spinning and Blinking
 type: docs
-prev: assignments/VUMeter/
-next: assignments/SpinningAndBlinking/getting-started
+prev: assignments/vu-meter/
+next: assignments/spinning-and-blinking/getting-started
 weight: 4
 ---
 

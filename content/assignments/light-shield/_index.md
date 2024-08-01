@@ -1,8 +1,8 @@
 ---
-title: LightShield
+title: Light Shield
 type: docs
 prev: assignments/
-next: assignments/LightShield/assembly
+next: assignments/light-shield/assembly
 weight: 1
 ---
 

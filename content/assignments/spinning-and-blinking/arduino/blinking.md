@@ -1,7 +1,7 @@
 ---
 title: Blinking
 type: docs
-prev: assignments/SpinningAndBlinking/Arduino
+prev: assignments/spinning-and-blinking/arduino
 weight: 1
 ---
 

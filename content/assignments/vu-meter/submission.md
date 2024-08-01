@@ -1,7 +1,7 @@
 ---
 title: Submission
 type: docs
-next: assignments/SpinningAndBlinking/
+next: assignments/spinning-and-blinking/
 weight: 3
 ---
 
