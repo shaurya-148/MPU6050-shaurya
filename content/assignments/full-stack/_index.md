@@ -30,17 +30,45 @@ You will create a **client** (the GUI running on your computer/phone) which comm
 
 **You are once again faced with an important decision**
 
-You now have **four** pathways to choose from:
+You have **two*** pathways to choose from: (kind of four pathways)
 
 {{< cards >}}
-  {{< card link="python" title="USB: Python & Arduino" >}}
-  {{< card link="python" title="USB: Python & Rust" >}}
-  {{< card link="python" title="BLE: Swift & Arduino" >}}
-  {{< card link="python" title="BLE: Swift & Rust" >}}
+  {{< card link="usb" title="USB: Python & Arduino or Rust" >}}
+  {{< card link="ble" title="BLE: Swift & Arduino or Rust" >}}
 {{< /cards >}}
 
 {{< callout type="warning" >}}
-  You **must** have a Mac and an iPhone to develop Swift apps.
+  You **must** have a Mac and an iPhone to use Swift for this assignment.
 {{< /callout >}}
 
-Similarly to the previous assignment, some of these paths are easier than others, but less interesting.
+{{< callout type="warning" >}}
+  Only use Rust if you completed the Rust path from [Spinning and Blinking]({{< ref "/assignments/spinning-and-blinking/rust" >}}).
+{{< /callout >}}
+
+## Your Options
+### USB
+
+The first two options will teach you how to conduct serial communication over USB[^1].
+On your computer you will use **Python** to create the client.
+
+You have probably heard of Python before, as it is hugely popular. It's also very easy to learn.
+
+### BLE
+
+The last two options will teach you how to communicate with BLE[^2]. You will develop an app
+for your phone using **Swift** and **SwiftUI**.
+
+Swift is a programming language made by Apple[^3] primarily for app development. SwiftUI is
+the framework Apple provides for declaratively designing modern, responsive, and frankly
+beautiful user interfaces across the Apple ecosystem.
+
+[^1]: **U**niversal **S**erial **B**us (USB). The classic ports on your computer, phone, and the DevBoard.
+[^2]: **B**luetooth **L**ow **E**nergy (BLE). The most modern "style" of Bluetooth communication.
+[^3]: Chris Latner was an employee at Apple when he created Swift. He received a lot of push back,
+and in fact, had to keep it mostly a secret until he had enough notoriety at the company to
+convince his higher ups to devote resources to it.
+He also created LLVM, the world's most advanced compiler backend, which Rust (and naturally Swift) **relies on** to provide many of it's
+features. This one man has improved the lives of tens, if not hundreds of millions of people simply
+by following his passion for engineering and design, despite the adversity he faced.
+He has ushered in the next chapter of global technological advancement. It would be wise
+to read about his life, you could very quickly become a better engineer!

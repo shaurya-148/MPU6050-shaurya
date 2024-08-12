@@ -45,19 +45,19 @@ The first step is to download [this](https://github.com/ECE-196/VUMeter/blob/mai
 
 Navigate to [this](https://circuitpython.org/board/espressif_esp32s3_devkitc_1_n8) page.
 
-Click "_Open Installer_"...
+Click "*Open Installer*"...
 
 ![](images/open-installer.png)
 
-and then click "_Install Bootloader Only_".
+and then click "*Install Bootloader Only*".
 
 ![](images/installer-select.png)
 
-Click "_Next_" until you reach this screen:
+Click "*Next*" until you reach this screen:
 
 ![](images/connect-button.png)
 
-Click "_Connect_". This dialog should appear:
+Click "*Connect*". This dialog should appear:
 
 {{< callout type="info" >}}
   You may need to grant your browser permission to access your USB ports.
@@ -65,9 +65,9 @@ Click "_Connect_". This dialog should appear:
 
 ![](images/connect-dialog.png)
 
-Click "_Connect_".
+Click "*Connect*".
 
-Click "_Continue_" and wait for the bootloader to flash...
+Click "*Continue*" and wait for the bootloader to flash...
 
 ![](images/flashing.png)
 
@@ -96,7 +96,7 @@ When the transfer is complete, it will disconnect, and a new drive will appear:
 ![](images/circuitpy.png)
 
 {{< callout type="info" >}}
-  If a keyboard dialog appears, click "_Quit_"
+  If a keyboard dialog appears, click "*Quit*"
 {{< /callout >}}
 
 ### Setup Workspace
@@ -105,31 +105,31 @@ Now that CircuitPython has been installed on your DevBoard, you can open VSCode 
 
 ![](images/vscode-open.png)
 
-Click "_Open Folder_" and select the `CIRCUITPY` directory.
+Click "*Open Folder*" and select the `CIRCUITPY` directory.
 
 The first thing you should do is rename `code.py` to `main.py`.
 
 ![](images/vscode-main.png)
 
-_So how do I run this?_ you may ask.
+*So how do I run this?* you may ask.
 
 Well we first need to tell VSCode how to interact with our CircuitPython runtime.
 
 Luckily for us, there is a VSCode extension for this!
 
-Navigate to the extensions pane and search "_python_", install the first result.
+Navigate to the extensions pane and search "*python*", install the first result.
 
-Then search "_circuitpython_" -- there should only be one result -- and click install.
+Then search "*circuitpython*" -- there should only be one result -- and click install.
 
 ![](images/vsscode-ext-install.png)
 
 Then go back to the explorer pane and select `main.py`.
 
-In the bottom right, click "_\<Choose a board>_", then search for the `ESP32-S3-DevKitC-1-N8`.
+In the bottom right, click "*\<Choose a board>*", then search for the `ESP32-S3-DevKitC-1-N8`.
 
 ![](images/devkit.png)
 
-Then press the little USB icon next to that button, or open the command pallette and search "_open serial_".
+Then press the little USB icon next to that button, or open the command pallette and search "*open serial*".
 
 Select the appropriate USB port.
 

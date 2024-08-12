@@ -1,309 +1,9 @@
 ---
-title: Tutorial
+title: Client
 type: docs
-prev: assignments/full-stack/
-weight: 1
+prev: assignments/full-stack/usb/firmware
+weight: 2
 ---
-
-Let's take a look at the hierarchy of the system we are about to design:
-
-```mermaid
-graph LR
-    subgraph "DevBoard"
-        subgraph "Front End"
-            A2(LED)
-        end
-
-        subgraph "Back End"
-            B2(Serial)
-            C2(Callbacks)
-            D2(Logic)
-        end
-
-        B2 --> C2 --> D2 --> A2
-        D2 --> B2
-    end
-
-    subgraph "Computer (Python)"
-        subgraph "Front End"
-            A1(UI)
-            B1(Alerts)
-        end
-
-        subgraph "Back End"
-            C1(Callbacks)
-            D1(Logic)
-            E1(Serial)
-        end
-
-        A1 --> C1 --> D1 <--> E1
-        D1 --> B1
-    end
-
-    B2 <--> E1
-```
-
-Now, I know this looks complicated, but we will tackle each block one by one, nice and slow.
-
-Once you are done with this, you will have a solid understanding of creating systems involving bidirectional communication between 2 devices, which is _super_ useful for _a ton_ of applications (including your final project).
-
-So let's get started.
-
-## Driving an LED
-
-We'll start simple, and just make a user controllable LED blink once per second. Before you begin, make sure that your Board is configured to the ESP32S3 Dev Module.
-
-On the DevBoard, the pin of the LED we will use is `17` (LED1).
-
-Here is the code:
-
-```cpp
-const int LED{17};
-
-void setup() {
-    pinMode(LED, OUTPUT);
-}
-
-void loop() {
-    digitalWrite(LED, HIGH);
-    delay(1000);
-    digitalWrite(LED, LOW);
-    delay(1000);
-}
-```
-
-The `setup` function runs once on boot.
-
-The `loop` function runs over and over again forever.
-
-## Hello, World!
-
-Now let's print some messages over the USB connection.
-
-```c
-void setup() {
-    USBSerial.begin(9600);
-}
-
-void loop() {
-    USBSerial.println("Hello, World!");
-    delay(1000);
-}
-```
-
-This prints `Hello, World!` every second. But how can we see it?
-
-If you are using the Arduino IDE, you can open the serial monitor, set the [baudrate](https://www.setra.com/blog/what-is-baud-rate-and-what-cable-length-is-required-1) to `9600`, and watch the hello's flow in!
-
-Another way we can read these messages is with Python!
-
-Python has a library called `pyserial`.
-
-To install it in your active Python environment, simply run:
-
-```
-python -m pip install pyserial
-```
-
-...in your terminal.
-
-{{< callout type="info" >}}
-  You can use Arduino IDE to determine the name of the port your DevBoard is on.
-{{< /callout >}}
-
-You can now open a Python file or REPL and write/run the following code:
-
-```python
-from serial import Serial, SerialException
-
-with Serial('/your/port', 9600) as ser:
-    while True:
-        print(ser.readline().decode())
-```
-
-`.readline()` accumulates bytes until the newline (`\n` ) byte is received.
-
-We use `.decode()` because `.readline()` returns `bytes` which can be _decoded_ into a string.
-
-## Serial LED
-
-Ok, so we can blink an LED, and we can send bytes from the DevBoard to our computer, but what about the other way 'round?
-
-In order to control the LED from our computer, we need to send messages the other way.
-
-To do this, we first set up _receiving_ bytes over serial on the DevBoard:
-
-### Interrupts
-
-An _interrupt_ is an event driven signal that runs code.
-
-In our case, an event we care to _handle_ is if we receive a byte over serial.
-
-Luckily, this event is available to us, it's called `ARDUINO_HW_CDC_RX_EVENT`.
-
-Wow, what it's trying to say is that if the Serial port's _receive buffer_ is not empty, this event will be triggered.
-
-So let's define a function we want to be called when that event is triggered (we receive a byte):
-
-```c
-void on_receive(void* event_handler_arg, esp_event_base_t event_base, int32_t event_id, void* event_data) { ... }
-```
-
-> The arguments of this function are defined by the type `esp_event_handler_t`. You can refer to Espressif's [documentation](https://docs.espressif.com/projects/esp-idf/en/latest/esp32/api-reference/system/esp_event.html) to see more.
-
-Then, we register the interrupt with the `USBSerial` peripheral in our `setup()` like so:
-
-```c
-void setup() {
-    pinMode(LED, OUTPUT);
-
-    // register "on_receive" as callback for RX event
-    USBSerial.onEvent(ARDUINO_HW_CDC_RX_EVENT, on_receive);
-    USBSerial.begin(9600);
-}
-```
-
-Ok, we also still configure the LED to be an output, great.
-
-Oh, and we correspond the byte received event to our function, nice!
-
-### Serial
-
-So, what should be in our `on_receive` function?
-
-Well, the first thing we need to do is get the data from the Serial port's buffer:
-
-```c
-// read one byte
-int state = USBSerial.read();
-```
-
-We consider each byte received to be the target LED state (_sent by the computer_).
-
-Then we need to do some validation, we know the LED can only be set to `LOW`, or `HIGH`, so we need to check the received byte is equal to either of those:
-
-```c
-// guard byte is valid LED state
-if (!(state == LOW || state == HIGH)) {
-    // invalid byte received
-    // what else should we do?
-    return;
-}
-```
-
-If we find the byte to be valid, we proceed to updating the LED:
-
-```c
-// update LED with valid state
-digitalWrite(LED, state);
-```
-
-Ok, this is pretty good, let's hop back over to Python.
-
-Let's try sending the byte `0x1` and see what happens:
-
-```python
-with Serial('/your/port', 9600) as ser:
-    ser.write(bytes([0x1]))
-    input() # keep port open to see the LED turn on
-```
-
-The LED should turn on!
-
-Ok! This is cool! But...
-
-### Validation
-
-What if we send an invalid byte? How could the app know? It _should_ know, right?
-
-Validation is an important consideration when developing communication systems. So let's add it.
-
-Let's create two more constants at the top of our file:
-
-```c
-const int LED{17};
-
-// add these
-const int S_OK{0xaa};
-const int S_ERR{0xff};
-```
-
-We can send back one of these depending on the validity of the received data.
-
-Let's go back and update `on_receive`:
-
-```c
-void on_receive(void* event_handler_arg, esp_event_base_t event_base, int32_t event_id, void* event_data) {
-    // read one byte
-    int state = USBSerial.read();
-
-    // guard byte is valid LED state
-    if (!(state == LOW || state == HIGH)) {
-    // invalid byte received
-    // report error
-    USBSerial.write(S_ERR);
-    return;
-    }
-
-    // update LED with valid state
-    digitalWrite(LED, state);
-    USBSerial.write(S_OK);
-}
-```
-
-Now whenever the app sends an LED state, it should expect a confirmation response.
-
-You can try this in Python:
-
-```python
-with Serial('/your/port', 9600) as ser:
-    ser.write(bytes([0x1]))
-    print(ser.read() == bytes([0xaa]))
-
-    ser.write(bytes([0x0]))
-    print(ser.read() == bytes([0xaa]))
-
-    ser.write(bytes([0x2]))
-    print(ser.read() == bytes([0xff]))
-```
-
-You should see 3 `True`'s.
-
-### Loop?
-
-What happened to `loop()`? What do we need to put in there?
-
-Well...
-
-```c
-void loop() { }
-```
-
-Nothing!
-
-Our code is completely interrupt driven, so the `loop` function need not be populated :\)
-
-At this point, we have completed half of the system!
-
-```mermaid
-graph LR
-    subgraph "DevBoard"
-        subgraph "Front End"
-            A2(LED)
-        end
-
-        subgraph "Back End"
-            B2(Serial)
-            C2(Callbacks)
-            D2(Logic)
-        end
-
-        B2 --> C2 --> D2 --> A2
-        D2 --> B2
-    end
-```
-
-## App
 
 Time for the other half...
 
@@ -319,7 +19,7 @@ This may seem trivial at first, but you must realize that Python - by default - 
 
 This is bad, we don't like this, so we will need to take care to design our app with _concurrency_ in mind.
 
-### UI
+## UI
 
 Let's start easy and just set up a simple UI.
 
@@ -365,7 +65,7 @@ We have:
 - a button to test sending an invalid byte
 - a disconnect button
 
-### Backend
+## Backend
 
 We now need to implement the missing backend components.
 
@@ -536,7 +236,7 @@ def send_invalid(self):
 
 And now these will properly handle an `S_ERR` response.
 
-### Safe Resource Acquisition
+## Safe Resource Acquisition
 
 Another thing we need to do is make sure our serial port is properly closed when our app exits.
 
@@ -562,7 +262,7 @@ if __name__ == '__main__':
         app.mainloop()
 ```
 
-### Threading
+## Threading
 
 Right now, if any serial code gets stuck or just takes a long time, our UI will freeze for that time.
 
@@ -620,18 +320,3 @@ Our custom type inherits from `Serial` and overrides the member functions we use
 Effectively, our type behaves _exactly like the `Serial` type_ but with a lock around every function call.
 
 Now replace every use of the `Serial` type with `LockedSerial`.
-
-## What Just Happened
-
-Ok! That was a lot! But i'm glad you made it :\)
-
-You now know how to:
-
-- write interrupt driven firmware
-- use the serial peripheral
-- digital communication between two devices
-  - validate data
-- create user interfaces with Python
-  - interaction between front and back end
-- threading
-  - locks

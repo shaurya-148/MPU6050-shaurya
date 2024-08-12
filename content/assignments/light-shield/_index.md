@@ -12,6 +12,9 @@ This assignment is the first piece to making your own VUMeter. Over the course o
 
 ![](images/in-action.png)
 
-To complete the light shield, you will learn about assembling PCBs with **S**urface **M**ounte**D** components by hand.
+To complete the light shield, you will learn about assembling PCBs with SMD[^1] components by hand.
 
 Good luck, and don't be afraid to ask for help.
+
+[^1]: **S**urface **M**ounted **D**evices (SMD) are components that sit on the surface of a PCB
+and are soldered directly to exposed copper.

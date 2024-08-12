@@ -61,7 +61,7 @@ Now we will start placing our components.
 
 As you work, you can request the components you need from the TAs at the component table.
 
-To find out what you need, refer to the **B**ill **O**f **M**aterials [here](https://github.com/ECE-196/DevBoard/blob/main/BOM.xlsx).
+To find out what you need, refer to the BOM[^1] [here](https://github.com/ECE-196/DevBoard/blob/main/BOM.xlsx).
 
 Once you have a component from the B.O.M. you can see which PCB labels the component corresponds to in the _designator_ column. With tweezers,
 carefully place each component on to the labeled position on the PCB. Make sure that the components you place are centered on the pads, and be careful not
@@ -122,3 +122,5 @@ Place the connector back down, remove the heat gun, and look again at your pins 
 - If your solder paste didn't turn out clean, it is much easier to just repaste. Don't try to make it work if you know you can do better.
 - Double check the BOM as you place components, while you can take components off of the paste if, it can easily cause bridging.
 - Take your time on every step, this is a very delicate process.
+
+[^1]: A **B**ill **O**f **M**aterials (BOM) is a document outlining the required components quantities and placements for a board.

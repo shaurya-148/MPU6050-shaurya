@@ -1,7 +1,7 @@
 ---
 title: Spinning
 type: docs
-prev: assignments/spinning-and-blinking/rust/blinking
+prev: assignments/spinning-and-blinking/arduino/blinking
 weight: 3
 ---
 
