@@ -44,10 +44,9 @@ use esp_hal::{
     peripherals::Peripherals,
     prelude::*,
     system::SystemControl,
-    timer::{timg::TimerGroup, ErasedTimer, OneShotTimer},
+    timer::{timg::TimerGroup},
 };
 use esp_println::println;
-use static_cell::StaticCell;
 ```
 
 This looks like a lot, but these are just crates we are importing to use in our
@@ -55,7 +54,7 @@ program. We will see *exactly* which crates we use and why as we explore the res
 of this file.
 
 ```rust
-#[main]
+#[esp_hal_embassy::main]
 async fn main(_spawner: Spawner) {
     // ...
 }
@@ -102,40 +101,17 @@ esp_println::logger::init_logger_from_env();
 Next up we enable logging via the ESP32s JTAG[^8] controller.
 
 ```rust
-let timg0 = TimerGroup::new(peripherals.TIMG0, &clocks, None);
+let timg0 = TimerGroup::new(peripherals.TIMG0, &clocks);
 ```
 
 Then we initialize the 0th timer group (which we can use to provide Embassy with a means for
 keeping time).
 
 ```rust
-let timer = {
-    static TIMER: StaticCell<[OneShotTimer<ErasedTimer>; 1]> = StaticCell::new();
-
-    TIMER.init([OneShotTimer::new(timg0.timer0.into())])
-};
+esp_hal_embassy::init(&clocks, timg0.timer0);
 ```
 
-This section is a little more complicated, but the next line...
-
-```rust
-esp_hal_embassy::init(&clocks, timer);
-```
-
-...makes it a little more clear.
-
-Embassy needs a `OneShotTimer<'static, T>` to provide monotonics[^10]. The `'static` indicates
-that this timer must exist for the entire duration of the program. `let` bindings always exist
-until the scope they were bound in ends. To create a `static` lifetime, the variable must be
-defined as `static`. But `static` values must be `const` (i.e. known at compile time and constant).
-
-So how do we take a runtime value (the timer) and coerce it into a `static` lifetime?
-
-Well we know that even though the timer doesn't exist for the *entire* duration of the program
-(it didn't exist before we initialized it at runtime), it *will* exist for the *rest* of the program. With this knowledge, we effectively satisfy the `static`
-requirement because the scope of use of Embassy is a subset of the lifetime of the timer.
-
-We use the `StaticCell` structure to accomplish the lifetime coersion.
+Embassy needs a `impl TimerCollection` (some time that implements the trait `TimerCollection`) to provide monotonics[^10].
 
 {{< callout type="info" >}}
   We understand that this may be uncharted territory for many of you. We implore you to do your own

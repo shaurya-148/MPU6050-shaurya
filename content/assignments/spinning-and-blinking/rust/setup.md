@@ -87,6 +87,21 @@ The resulting file structure should look something like:
   You can learn more about this structure [here](https://embassy.dev/book/#_project_structure).
 {{< /callout >}}
 
+Open the `Cargo.toml` file and append the following:
+
+```toml
+[patch.crates-io]
+esp-hal = { git = "https://github.com/esp-rs/esp-hal/", rev = "f95ab0def50130a9d7da0ba0101c921e239ecdb5" }
+esp-hal-embassy = { git = "https://github.com/esp-rs/esp-hal/", rev = "f95ab0def50130a9d7da0ba0101c921e239ecdb5" }
+esp-backtrace = { git = "https://github.com/esp-rs/esp-hal/", rev = "f95ab0def50130a9d7da0ba0101c921e239ecdb5" }
+esp-println = { git = "https://github.com/esp-rs/esp-hal/", rev = "f95ab0def50130a9d7da0ba0101c921e239ecdb5" }
+```
+
+{{< callout type="warning" >}}
+  The ESP32 Rust HAL is *highly* volatile right now, so as a precautionary measure,
+  we are locking the version of the esp related crates with a dependency patch.
+{{< /callout >}}
+
 ## Checkpoint
 
 Let's make sure all we've done so far is working properly.

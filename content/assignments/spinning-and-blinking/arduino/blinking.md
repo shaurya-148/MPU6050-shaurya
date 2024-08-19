@@ -7,7 +7,7 @@ weight: 1
 
 Making an LED blink is rather straight forward:
 
-```c
+```cpp
 const unsigned int LED{17}; // define a constant for the LED pin
 
 void setup() {
