@@ -51,7 +51,7 @@ Now we need to install `cargo-embassy`, a tool for generating Embassy projects.
 Execute:
 
 ```sh
-cargo install cargo-embassy
+cargo install cargo-embassy --git https://github.com/ece-196/cargo-embassy.git
 ```
 
 ## Project
