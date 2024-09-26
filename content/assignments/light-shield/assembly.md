@@ -22,9 +22,10 @@ You need:
 
 ### Soldering
 
-Then, grab a solder paste syringe, you may need to share with your peers.
-
 Then, go to EnVision to solder the components with the available equipment of your choice (probably a soldering iron).
+
+Soldering these SMD components by hand can take some finesse, so feel free take your time.
+In the next assignment we will learn a method for soldering boards with many SMD components.
 
 {{% /steps %}}
 
