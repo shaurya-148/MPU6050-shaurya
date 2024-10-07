@@ -123,4 +123,15 @@ Place the connector back down, remove the heat gun, and look again at your pins 
 - Double check the BOM as you place components, while you can take components off of the paste if, it can easily cause bridging.
 - Take your time on every step, this is a very delicate process.
 
+### Good housekeeping
+
+We will be sharing stations and stencils in this assignment. Once you have successfully applied solder paste to your board,
+clean your stencil and jig so the next person can start with their board right away.
+
+The stencils are very delicate, and can be rendered useless with just a small bend. In order to clean the stencil, place it flat
+on the table and gently rub the alcohol wipe across the top of the stencil, as shown. Flip the stecil and repeat the process.
+
+![](images/cleaning_stencil.png)
+
+
 [^1]: A **B**ill **O**f **M**aterials (BOM) is a document outlining the required components quantities and placements for a board.
