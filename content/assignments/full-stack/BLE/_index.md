@@ -51,3 +51,40 @@ bidirectional communication between 2 devices, which is *super* useful for *a to
 applications (including your final project).
 
 So let's get started.
+
+## How Does BLE Work?
+
+Modern BLE (Bluetooth Low Energy) systems rely on the *Service -> Characteristic* architecture.
+
+Your iPhone can scan for BLE devices advertising **services**, to decide whether to connect to them or not.
+
+A service is like an Object, it contains states, and represents some kind of data or behavior.
+
+Services contain **characteristics**, which are the states of the service. You can configure characteristics to be readable and writable.
+
+In the case of our lamp, we will have one service *Lamp* with three characteristics: *R*, *G*, and *B* (The red, green, and blue values).
+
+Here is a flowchart of how our BLE system will work:
+
+```mermaid
+flowchart TD
+P(Peripheral) --> L
+    subgraph "Client (iPhone)"
+    C(Central Manager) --> P
+    end
+
+    subgraph "Server (ESP32)"
+    subgraph Services
+    L(MyFirstService) --> R
+    L --> G
+    L --> B
+    subgraph Characteristics
+    R(C0)
+    G(C1)
+    B(C2)
+    end
+    end
+    end
+```
+
+This layout is called **GATT** (Generic ATTribute Profile)

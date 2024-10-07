@@ -79,6 +79,15 @@ variable as unused with the leading underscore.
 
 Now let's look at what exactly we *do* in this function to configure our microcontroller.
 
+On the first line, we enable logging via the ESP32s JTAG[^8] controller:
+
+```rust
+esp_println::logger::init_logger_from_env();
+```
+
+Next, we take ownership of all peripherals. This operation can only be done
+once, per RAII, we may only have *one* binding for *one* resource:
+
 ```rust
 let peripherals = Peripherals::take();
 let system = SystemControl::new(peripherals.SYSTEM);
@@ -86,32 +95,23 @@ let system = SystemControl::new(peripherals.SYSTEM);
 let clocks = ClockControl::max(system.clock_control).freeze();
 ```
 
-In the first line, we take ownership of all peripherals. This operation can only be done
-once, per RAII, we may only have *one* binding for *one* resource.
-
 In the second line we create a binding to specifically the system peripheral, which controls
 clocks, interconnects, etc.
 
 And on the third line, configure the system clocks to run at their maximum frequency.
 
-```rust
-esp_println::logger::init_logger_from_env();
-```
-
-Next up we enable logging via the ESP32s JTAG[^8] controller.
+Then we initialize the 0th timer group (which we can use to provide Embassy with a means for
+keeping time):
 
 ```rust
 let timg0 = TimerGroup::new(peripherals.TIMG0, &clocks);
 ```
 
-Then we initialize the 0th timer group (which we can use to provide Embassy with a means for
-keeping time).
+Embassy needs a `impl TimerCollection` (some timer that implements the trait `TimerCollection`) to provide monotonics[^10]:
 
 ```rust
 esp_hal_embassy::init(&clocks, timg0.timer0);
 ```
-
-Embassy needs a `impl TimerCollection` (some time that implements the trait `TimerCollection`) to provide monotonics[^10].
 
 {{< callout type="info" >}}
   We understand that this may be uncharted territory for many of you. We implore you to do your own
