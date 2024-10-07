@@ -107,6 +107,7 @@ The MCPWM peripheral's clock is sourced from the `crypto_pwm_clock`, we can veri
 its speed:
 
 ```rust
+let clocks = Clocks::get();
 println!("src clock: {}", clocks.crypto_pwm_clock);
 ```
 
@@ -126,7 +127,7 @@ default prescaler is `Div1`.
 Now, we configure our peripheral (the MCPWM) clock:
 
 ```rust
-let clock_cfg = PeripheralClockConfig::with_frequency(&clocks, 32.MHz()).unwrap();
+let clock_cfg = PeripheralClockConfig::with_frequency(32.MHz()).unwrap();
 ```
 
 > If we hadn't imported the fugit integer extension trait, we would have encountered

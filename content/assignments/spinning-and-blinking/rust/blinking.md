@@ -39,12 +39,8 @@ use embassy_executor::Spawner;
 use embassy_time::Timer;
 use esp_backtrace as _;
 use esp_hal::{
-    clock::ClockControl,
     gpio::{Io, Level, Output},
-    peripherals::Peripherals,
-    prelude::*,
-    system::SystemControl,
-    timer::{timg::TimerGroup},
+    timer::timg::TimerGroup,
 };
 use esp_println::println;
 ```
@@ -89,28 +85,20 @@ Next, we take ownership of all peripherals. This operation can only be done
 once, per RAII, we may only have *one* binding for *one* resource:
 
 ```rust
-let peripherals = Peripherals::take();
-let system = SystemControl::new(peripherals.SYSTEM);
-
-let clocks = ClockControl::max(system.clock_control).freeze();
+let peripherals = esp_hal::init(esp_hal::Config::default());
 ```
-
-In the second line we create a binding to specifically the system peripheral, which controls
-clocks, interconnects, etc.
-
-And on the third line, configure the system clocks to run at their maximum frequency.
 
 Then we initialize the 0th timer group (which we can use to provide Embassy with a means for
 keeping time):
 
 ```rust
-let timg0 = TimerGroup::new(peripherals.TIMG0, &clocks);
+let timg0 = TimerGroup::new(peripherals.TIMG0);
 ```
 
 Embassy needs a `impl TimerCollection` (some timer that implements the trait `TimerCollection`) to provide monotonics[^10]:
 
 ```rust
-esp_hal_embassy::init(&clocks, timg0.timer0);
+esp_hal_embassy::init(timg0.timer0);
 ```
 
 {{< callout type="info" >}}
