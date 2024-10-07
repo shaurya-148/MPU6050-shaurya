@@ -4,6 +4,7 @@ type: docs
 prev: assignments/spinning-and-blinking/arduino/blinking
 next: assignments/spinning-and-blinking/submission
 weight: 3
+math: true
 ---
 
 It's time to get our hands dirty and really change this firmware. We're going to make a motor spin, but to do that, firmware won't be enough.
