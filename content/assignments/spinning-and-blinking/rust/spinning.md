@@ -92,6 +92,10 @@ Then import the extension trait[^1] at the top of the file:
 use fugit::RateExtU32;
 ```
 
+> From now on the required imports will not be shown. Your LSP may provide them for
+> you, or you can look through the [docs](https://docs.esp-rs.org/esp-hal/esp-hal/0.20.1/esp32s3/esp_hal/)
+> to find them yourself.
+
 Go back to where we defined the motor pins and rewrite it like this:
 
 ```rust
