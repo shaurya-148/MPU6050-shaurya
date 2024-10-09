@@ -14,5 +14,5 @@ The DevBoard is *not* as simple as the previous, and will require additional equ
 
 Hope you don't have shaky hands!
 
-- [Schematics](assignments/dev-board/ESP32-S3-DevBoard-Pcb.pdf)
-- [PCB Dimensions](assignments/dev-board/ESP32-S3-DevBoard-Sch.pdf)
+- [Schematics](https://github.com/ECE-196/docs/blob/main/content/assignments/dev-board/pdfs/ESP32-S3-DevBoard-Sch.pdf)
+- [PCB Dimensions](https://github.com/ECE-196/docs/blob/main/content/assignments/dev-board/pdfs/ESP32-S3-DevBoard-Pcb.pdf)
