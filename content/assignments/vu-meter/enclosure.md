@@ -31,7 +31,7 @@ Translate your sketch to a CAD file
 
 - Save your CAD file(s) as either .sldprt, .iges, or .step files.
 - Take Screen Shots (or export improved renderings) of your CAD
-- Submit onto Canvas
+- Submit onto Github
 
 We will discuss these in class, and after we complete PCB Assembly we will 3D print these CAD Files!
 
@@ -62,7 +62,7 @@ EnVision 3D printing trainings are found within the student portal at [Envision'
 
 - Save your CAD file as an .STL and transfer to the computers near the 3D printers with a USB drive
 - Double check your selections for resolution and support. We recommend the lowest resolution (for fastest times) whenever prototyping although the tolerance may be slightly worse. This will help tremendously when iterating multiple times.
-- Submit onto Canvas
+- Submit onto Github
 
 #### Check out your print and iterate if need
 
