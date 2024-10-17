@@ -62,7 +62,7 @@ EnVision 3D printing trainings are found within the student portal at [Envision'
 
 - Save your CAD file as an .STL and transfer to the computers near the 3D printers with a USB drive
 - Double check your selections for resolution and support. We recommend the lowest resolution (for fastest times) whenever prototyping although the tolerance may be slightly worse. This will help tremendously when iterating multiple times.
-- Submit onto Canvas
+- Submit onto Github
 
 #### Check out your print and iterate if need
 
