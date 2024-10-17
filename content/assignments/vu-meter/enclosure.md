@@ -31,7 +31,7 @@ Translate your sketch to a CAD file
 
 - Save your CAD file(s) as either .sldprt, .iges, or .step files.
 - Take Screen Shots (or export improved renderings) of your CAD
-- Submit onto Canvas
+- Submit onto Github
 
 We will discuss these in class, and after we complete PCB Assembly we will 3D print these CAD Files!
 
