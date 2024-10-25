@@ -2,7 +2,7 @@
 title: Firmware
 type: docs
 prev: assignments/full-stack/ble
-next: assignments/full-stack/ble/client
+next: assignments/full-stack/ble/app
 weight: 1
 ---
 
@@ -22,7 +22,7 @@ cargo add esp-wifi --features esp32s3,ble,async,phy-enable-usb
 
 to add the `esp-wifi` crate with BLE capability enabled.
 
-And add the following dependency:
+And add the following dependency in `Cargo.toml` under `[dependencies]`:
 
 ```toml
 bleps = { git = "https://github.com/bjoernQ/bleps", package = "bleps", branch = "main", features = [
@@ -157,7 +157,7 @@ It makes sense to advertise the UUID of an available service.
 
 In this case, I randomly created a UUID with [this](https://www.uuidgenerator.net) tool.
 
-Now let's create a GATT server with one service with one characteristic:
+Now let's create a GATT server with a single service that has one characteristic:
 
 ```rust
 gatt!([service {
@@ -290,9 +290,9 @@ let mut wf = |_offset: usize, data: &[u8]| {
     });
 };
 ```
-> `borrow()` and `borrow_mut()` will panic of the resource is already borrowed, but we know
+> `borrow()` and `borrow_mut()` will panic if the resource is already borrowed, but we know
 > the lifetimes of these closures will not overlap.
-> The compiler may be able to determine this fact, and will optimize out the runtime check
+> The compiler may be able to determine this fact, and could optimize out the runtime check
 > entirely!
 
 Finally, we can start the server:

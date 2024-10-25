@@ -2,6 +2,7 @@
 title: What Just Happened
 type: docs
 prev: assignments/full-stack/usb/client
+next: assignments/full-stack/submission
 weight: 3
 ---
 
@@ -11,9 +12,9 @@ You now know how to:
 
 - write interrupt driven firmware
 - use the serial peripheral
-- digital communication between two devices
+- communicate between two devices over serial
   - validate data
-- create user interfaces with Python
+- build user interfaces with Python
   - interaction between front and back end
-- threading
+- create thread-safe structures
   - locks

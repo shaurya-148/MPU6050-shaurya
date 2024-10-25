@@ -62,7 +62,7 @@ A service is like an Object, it contains states, and represents some kind of dat
 
 Services contain **characteristics**, which are the states of the service. You can configure characteristics to be readable and writable.
 
-In the case of our lamp, we will have one service *Lamp* with three characteristics: *R*, *G*, and *B* (The red, green, and blue values).
+In this case, we will have one service with one characteristic: *LED*.
 
 Here is a flowchart of how our BLE system will work:
 

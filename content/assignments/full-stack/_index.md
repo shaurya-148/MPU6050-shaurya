@@ -4,8 +4,6 @@ type: docs
 prev: assignments/spinning-and-blinking/
 next: assignments/full-stack/tutorial
 weight: 5
-sidebar:
-  exclude: true
 ---
 
 ## Preamble
@@ -21,7 +19,7 @@ For us, the full stack is:
 1. Communication
 1. User Interface
 
-You're half way there! In one fell swoop, we're going to finish off the last two.
+You're halfway there! In one fell swoop, we're going to finish off the last two.
 
 ## Assignment
 
@@ -32,11 +30,11 @@ You will create a **client** (the GUI running on your computer/phone) which comm
 
 **You are once again faced with an important decision**
 
-You have **two*** pathways to choose from: (kind of four pathways)
+You have **two** pathways to choose from:
 
 {{< cards >}}
-  {{< card link="usb" title="USB: Python & Arduino or Rust" >}}
-  {{< card link="ble" title="BLE: Swift & Arduino or Rust" >}}
+  {{< card link="usb" title="USB: Python & Arduino" >}}
+  {{< card link="ble" title="BLE: Swift & Rust" >}}
 {{< /cards >}}
 
 {{< callout type="warning" >}}
@@ -50,14 +48,12 @@ You have **two*** pathways to choose from: (kind of four pathways)
 ## Your Options
 ### USB
 
-The first two options will teach you how to conduct serial communication over USB[^1].
+This option will teach you how to conduct serial communication over USB[^1].
 On your computer you will use **Python** to create the client.
-
-You have probably heard of Python before, as it is hugely popular. It's also very easy to learn.
 
 ### BLE
 
-The last two options will teach you how to communicate with BLE[^2]. You will develop an app
+This option will teach you how to communicate with BLE[^2]. You will develop an app
 for your phone using **Swift** and **SwiftUI**.
 
 Swift is a programming language made by Apple[^3] primarily for app development. SwiftUI is

@@ -32,4 +32,4 @@ You can download XCode [here](https://developer.apple.com/xcode/).
 
 It is common for teams to want to develop an iOS app that communicates with their device via BLE.
 
-An old EnVision tutorial for creating a simple RGB lamp can be found [here](https://github.com/AdinAck/EnVision-Tutorial-Lamp). This tutorial goes over setting up a Swift app to use BLE and writing Arduino BLE code for the device.
+To learn more, do the [Full Stack](/assignments/full-stack) assignment.
