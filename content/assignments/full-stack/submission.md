@@ -1,6 +1,7 @@
 ---
 title: Submission
 type: docs
+next: assignments/tutorial
 weight: 3
 ---
 

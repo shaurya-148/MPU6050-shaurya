@@ -12,4 +12,5 @@ All of the ECE 196 assignment instructions can be found here.
   {{< card link="vu-meter" title="VU Meter" icon="chart-square-bar" >}}
   {{< card link="spinning-and-blinking" title="Spinning and Blinking" icon="code" >}}
   {{< card link="full-stack" title="Full Stack" icon="wifi" >}}
+  {{< card link="tutorial" title="Tutorial" icon="pencil" >}}
 {{< /cards >}}
