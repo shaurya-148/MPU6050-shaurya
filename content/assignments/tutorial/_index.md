@@ -13,7 +13,7 @@ This is where your tutorials will go!
 
 To get started with your tutorial, get the template from [here](https://github.com/ece-196/tutorial).
 
-You will need to **fork** *this* repository and make a **pull request** to push your changes to this site.
+You will need to **fork** [this](https://github.com/ece-196/docs) repository and make a **pull request** to push your changes to this site.
 
 Learn about forks [here](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/working-with-forks/about-forks).
 
