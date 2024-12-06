@@ -7,7 +7,7 @@ authors:
   - name: Adrian Mendoza
 ---
 
-![Image of Servo](./Team5/Servo.webp)
+![Image of Servo](Team5/Servo.webp)
 
 ## Introduction
 
@@ -52,7 +52,7 @@ PWM (Pulse Width Modulation) is a technique used to control devices like servos 
      - **1.5 ms HIGH** → 7.5% duty cycle (90° position).
      - **2 ms HIGH** → 10% duty cycle (180° position).
 
-   ![PWM Duty Cycle Image](./Team5/PWM.png)
+   ![PWM Duty Cycle Image](Team5/PWM.png)
 
 3. **Pulse Width**:
    - The duration the signal remains HIGH in each cycle.
@@ -65,7 +65,7 @@ PWM (Pulse Width Modulation) is a technique used to control devices like servos 
   - **1 ms** → 0° (minimum position).
   - **1.5 ms** → 90° (center position).
   - **2 ms** → 180° (maximum position).
-  ![PWM Duty Cycle Image](./Team5/angle.png)
+  ![PWM Duty Cycle Image](Team5/angle.png)
 
 #### Practical Example
 
@@ -144,7 +144,7 @@ Servos require three connections:
 2. Connect the servo’s power wire (red) to the 5V pin on your DevBoard or an external power source.
 3. Connect the servo’s ground wire (black or brown) to GND.
 
-![Wiring Image](./Team5/wiring.png)
+![Wiring Image](Team5/wiring.png)
 ## Part 02: Writing the Code
 
 ### Introduction
