@@ -7,7 +7,7 @@ authors:
   name: Peter Quawas
 ---
 
-![](image-5.png)
+![](Team2Photos/image-5.png)
 
 ## Introduction
 
@@ -28,7 +28,7 @@ You should have the Arduino IDE and your preferred Python IDE already downloaded
 
 ### Required Downloads and Installations
 
-[Arduino IDE](https://www.arduino.cc/en/software)  
+[Arduino IDE](https://www.arduino.cc/en/software)
 
 [Visual Studio Code](https://code.visualstudio.com/download)
 
@@ -61,39 +61,39 @@ At this point you should know the basics of coding with Arduino which is all you
 
 ### Instructions
 
-Open up a new sketch and include the WiFi.h library. 
+Open up a new sketch and include the WiFi.h library.
 ```c
-#include <WiFi.h> 
+#include <WiFi.h>
 ```
 
-Now we can create a WiFiServer object, this will allow the ESP32 to act as a SoftAP (software enabled access point). The server object requires a server port for its constructor. Server port 80 is used for HTTP (hypertext transfer protocol), so we can use that for now. 
+Now we can create a WiFiServer object, this will allow the ESP32 to act as a SoftAP (software enabled access point). The server object requires a server port for its constructor. Server port 80 is used for HTTP (hypertext transfer protocol), so we can use that for now.
 ```c
-const int serverPort(80); 
-WiFiServer theServer(serverPort); 
+const int serverPort(80);
+WiFiServer theServer(serverPort);
 ```
 
-Every WiFi network has it's own credentials, i.e. name and password. So lets set up a name and password for our ESP32. 
+Every WiFi network has it's own credentials, i.e. name and password. So lets set up a name and password for our ESP32.
 ```c
-const char* theSSID { "InsertName" }; 
-const char* thePassword { "InsertPassword" }; 
+const char* theSSID { "InsertName" };
+const char* thePassword { "InsertPassword" };
 ```
 
-Now we can create the SoftAP and start the server. Add the following code in your setup block. 
+Now we can create the SoftAP and start the server. Add the following code in your setup block.
 ```c
-WiFi.softAP(theSSID, thePassword); 
-theServer.begin(); 
+WiFi.softAP(theSSID, thePassword);
+theServer.begin();
 ```
 
 After setting up the SoftAP we can find the ESP's IP using this line of code:
 (**Hint:** Set up the Serial to print the IP)
 ```c
-WiFi.softAPIP(); 
+WiFi.softAPIP();
 ```
 
-In the loop function we will handle client requests. 
+In the loop function we will handle client requests.
 ```c
-void loop() { 
-  delay(1000); 
+void loop() {
+  delay(1000);
 
   WiFiClient theClient = theServer.available();
 
@@ -108,17 +108,17 @@ void loop() {
 }
 ```
 
-We can receive and send signals using .readString() and .write(). 
+We can receive and send signals using .readString() and .write().
 ```c
-String theReceived = theClient.readString(); 
-theClient.write("Success!"); 
+String theReceived = theClient.readString();
+theClient.write("Success!");
 ```
 
 Finally, upload the code and watch your ESP32 network pop up!
 
-![](image-3.png)  
+![](Team2Photos/image-3.png)
 
-![](image-4.png)
+![](Team2Photos/image-4.png)
 
 Note:
   - You can also use .read() but this can only read a single char
@@ -141,38 +141,38 @@ Now that we have set up the ESP32's wireless network we can create client commun
 
 ### Instructions
 
-Open your Python IDE, create a new python script, and include the socket library. 
+Open your Python IDE, create a new python script, and include the socket library.
 ```python
 import socket
 ```
 
-To connect to our ESP32 via the socket you need the ESP's IP and server port. 
+To connect to our ESP32 via the socket you need the ESP's IP and server port.
 ```python
 ESP_IP = ""; # Hmmmm, did I print that IP ?
 serverPort = ; # Which port did we use again ?
 ```
 
-Now our client can connect through the socket, add this line to your code: 
+Now our client can connect through the socket, add this line to your code:
 ```python
 with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as theSocket:
     theSocket.connect((ESP_IP, serverPort));
 ```
 
-We can send information by using .sendall(). We can do this by encoding a string with the .encode() function. Our code may look like this: 
+We can send information by using .sendall(). We can do this by encoding a string with the .encode() function. Our code may look like this:
 ```python
-aString = "0"; 
-theSocket.sendall(aString.encode()); 
+aString = "0";
+theSocket.sendall(aString.encode());
 ```
 
 Now if we run the python script our ESP32 will receive "0". Check to see if this is true by making the serial print the received data!
 
-We receive information using .recv() and .decode(). 
+We receive information using .recv() and .decode().
 ```python
-theReceived = (theSocket.recv(1024)).decode(); 
+theReceived = (theSocket.recv(1024)).decode();
 ```
 Now if we run the python script we should see the message sent back to us by the ESP32!
 
-![](image-2.png)
+![](Team2Photos/image-2.png)
 
 Note:
 - You must be connected to your ESP32 WiFi network to allow the client to communicate with the ESP32 through the socket
@@ -186,7 +186,7 @@ Now that we know how to set up our ESP32 as a wireless access point and we can c
 ### Code
 
 ```c
-#include <WiFi.h> 
+#include <WiFi.h>
 
 const char* theSSID { "CoolESPAccessPoint" };
 const char* thePassword { "" };
@@ -256,6 +256,6 @@ Let's use all this new knowledge to create a way to turn a motor on and off by s
 
 ### Useful links
 
-[How to Set an ESP32 Access Point (AP) for Web Server](https://randomnerdtutorials.com/esp32-access-point-ap-web-server/)  
+[How to Set an ESP32 Access Point (AP) for Web Server](https://randomnerdtutorials.com/esp32-access-point-ap-web-server/)
 
-[Information on Sockets in Python](https://docs.python.org/3/library/socket.html) 
+[Information on Sockets in Python](https://docs.python.org/3/library/socket.html)
