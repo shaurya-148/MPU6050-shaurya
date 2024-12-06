@@ -144,7 +144,7 @@ Servos require three connections:
 2. Connect the servo’s power wire (red) to the 5V pin on your DevBoard or an external power source.
 3. Connect the servo’s ground wire (black or brown) to GND.
 
-![Wiring Image](Team5/wiring.png)
+![Wiring Image](Team5/wiring.jpeg)
 ## Part 02: Writing the Code
 
 ### Introduction
