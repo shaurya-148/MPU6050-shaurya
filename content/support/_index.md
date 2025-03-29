@@ -4,12 +4,12 @@ toc: false
 ---
 
 ## Tutors
-
+<!-- 
 #### Adin Ackerman
 
 ![](images/Adin_IA.png)
 
-*Email:* aiackerman@ucsd.edu
+*Email:* aiackerman@ucsd.edu -->
 
 #### Leo Naab
 
@@ -23,8 +23,20 @@ toc: false
 
 *Email:* myeoh@ucsd.edu
 
-#### Byron Chan
+<!-- #### Byron Chan
 
 ![](images/Byron_IA.png)
 
-*Email:* bschan@ucsd.edu
+*Email:* bschan@ucsd.edu -->
+
+#### Cannon Wurster
+
+*Email:* ccwurster@ucsd.edu
+#### Juliana Miller
+
+*Email:* jkmiller@ucsd.edu
+#### Allen Keng
+
+![](images/Allen_IA.jpg)
+
+*Email:* aekeng@ucsd.edu

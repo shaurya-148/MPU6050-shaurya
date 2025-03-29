@@ -4,6 +4,7 @@ type: docs
 prev: assignments/vu-meter/
 next: assignments/spinning-and-blinking/getting-started
 weight: 4
+draft: true
 ---
 
 In this assignment you will learn to create a **G**raphical **U**ser **I**nterface (GUI) to interact with a microcontroller.

@@ -4,6 +4,7 @@ type: docs
 prev: assignments/spinning-and-blinking/
 next: assignments/full-stack/tutorial
 weight: 5
+draft: true
 ---
 
 ## Preamble
