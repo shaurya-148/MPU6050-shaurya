@@ -31,8 +31,12 @@ toc: false
 
 #### Cannon Wurster
 
+![](images/Cannon_IA.png)
+
 *Email:* ccwurster@ucsd.edu
 #### Juliana Miller
+
+![](images/Juliana_IA.jpg)
 
 *Email:* jkmiller@ucsd.edu
 #### Allen Keng
