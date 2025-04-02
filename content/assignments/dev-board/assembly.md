@@ -61,7 +61,7 @@ Now we will start placing our components.
 
 As you work, you can request the components you need from the TAs at the component table.
 
-To find out what you need, refer to the BOM[^1] [here](https://github.com/ECE-196/DevBoard/blob/main/BOM.xlsx).
+To find out what you need, refer to the BOM[^1] [here](https://github.com/ECE-196/DevBoard/blob/main/BOM.pdf).
 
 Once you have a component from the B.O.M. you can see which PCB labels the component corresponds to in the _designator_ column. With tweezers,
 carefully place each component on to the labeled position on the PCB. Make sure that the components you place are centered on the pads, and be careful not
