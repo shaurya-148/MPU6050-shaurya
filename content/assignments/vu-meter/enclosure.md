@@ -24,8 +24,9 @@ Make a sketch of your PCB and enclosure
 
 Translate your sketch to a CAD file
 
-- You may use any CAD software, but we highly recommend the use of [Onshape](https://onshape.com), [SolidWorks](https://solidWorks.com), or [Fusion360](https://www.autodesk.com/products/fusion-360/).
+- You may use any CAD software, but we highly recommend the use of [Onshape](https://onshape.com), instead of [SolidWorks](https://solidWorks.com), or [Fusion360](https://www.autodesk.com/products/fusion-360/).
 - When creating your CAD file, consider how to improve 3D printability and consider tolerance
+- CAD Files for reference [here](https://cad.onshape.com/documents/caf5c815b9984f0cb1f1307f/w/b068f4dcfc1fd8134e540bdd/e/b74d3986706152d5b7be94e5?renderMode=0&uiState=67edc87c94ee2703b964a403)
 
 ### Save Files and Submit
 
