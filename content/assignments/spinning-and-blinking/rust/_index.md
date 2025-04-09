@@ -4,6 +4,7 @@ type: docs
 prev: assignments/spinning-and-blinking/
 next: assignments/spinning-and-blinking/rust/setup
 weight: 2
+draft: true
 ---
 
 Rust is an esoteric[^1] multiparadigm[^2] systems programming language with an emphasis on safety.

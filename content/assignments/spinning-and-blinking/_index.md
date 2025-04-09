@@ -4,10 +4,10 @@ type: docs
 prev: assignments/vu-meter/
 next: assignments/spinning-and-blinking/getting-started
 weight: 4
-draft: true
+draft: false
 ---
 
-In this assignment you will learn to create a **G**raphical **U**ser **I**nterface (GUI) to interact with a microcontroller.
+<!-- In this assignment you will learn to create a **G**raphical **U**ser **I**nterface (GUI) to interact with a microcontroller.
 
 **You are faced with an important decision.**
 
@@ -26,4 +26,14 @@ embedded systems, you should select this option.
 
 You may have *heard* of Rust, or even tried it! Rust as an embedded systems language is a brand new field on the bleeding edge of industry.
 As such, there are less resources, it is incomplete, and it is ever changing. If you want a challenge, to get a *much* better understanding of
-how microcontrollers actually work, and a taste of the future, we recommend this option.
+how microcontrollers actually work, and a taste of the future, we recommend this option. -->
+
+In these next assignments you will learn to create a **G**raphical **U**ser **I**nterface (GUI) to interact with a microcontroller.
+
+We will be leaving CircuitPython in the pursuit of better understanding how good  firmware is written. 
+
+For this next assignment, you will be working with Arduino. You may already be familiar with Arduino, as it is a very popular educational platform for introducing students to embedded systems.
+
+{{< cards >}}
+  {{< card link="arduino" title="Arduino" image="images/arduino.png" >}}
+{{< /cards >}}
