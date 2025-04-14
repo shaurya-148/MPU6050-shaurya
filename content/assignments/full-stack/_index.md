@@ -5,7 +5,7 @@ prev: assignments/spinning-and-blinking/
 next: assignments/full-stack/tutorial
 weight: 5
 sidebar:
-  exclude: true
+  exclude: false
 ---
 
 ## Preamble
@@ -32,7 +32,7 @@ You will create a **client** (the GUI running on your computer/phone) which comm
 
 **You are once again faced with an important decision**
 
-You have **two** pathways to choose from:
+You have **two** pathways to choose from. **(In ECE 196 Spring 25, we will be using the USB: Python and Arduino path)**:
 
 {{< cards >}}
   {{< card link="usb" title="USB: Python & Arduino" >}}
