@@ -10,13 +10,19 @@ weight: 1
 
 Let's print some messages over the USB connection.
 
+First, you **MUST** enable CDC on boot on the Arduino IDE. This is a special setting to enable the Communications Device Class for the ESP32. Tools -> USB CDC On Boot -> Enabled
+
+<img width="618" alt="image" src="https://github.com/user-attachments/assets/d0582272-9a9d-48e0-819e-3cab8757e19a" />
+
+Now do:
+
 ```cpp
 void setup() {
-    USBSerial.begin(9600);
+    Serial.begin(9600);
 }
 
 void loop() {
-    USBSerial.println("Hello, World!");
+    Serial.println("Hello, World!");
     delay(1000);
 }
 ```
@@ -83,15 +89,15 @@ void on_receive(void* event_handler_arg, esp_event_base_t event_base, int32_t ev
 
 > The signature of this function is defined by the type `esp_event_handler_t`. You can refer to Espressif's [documentation](https://docs.espressif.com/projects/esp-idf/en/latest/esp32/api-reference/system/esp_event.html) to see more.
 
-Then, we register the interrupt with the `USBSerial` peripheral in our `setup()` like so:
+Then, we register the interrupt with the `Serial` peripheral in our `setup()` like so:
 
 ```cpp
 void setup() {
     pinMode(LED, OUTPUT);
 
     // register "on_receive" as callback for RX event
-    USBSerial.onEvent(ARDUINO_HW_CDC_RX_EVENT, on_receive);
-    USBSerial.begin(9600);
+    Serial.onEvent(ARDUINO_HW_CDC_RX_EVENT, on_receive);
+    Serial.begin(9600);
 }
 ```
 
@@ -107,7 +113,7 @@ Well, the first thing we need to do is get the data from the serial port's buffe
 
 ```cpp
 // read one byte
-char state { USBSerial.read() };
+char state { Serial.read() };
 ```
 
 We consider each byte received to be the target LED state (*sent by the computer*).
@@ -167,19 +173,19 @@ Let's go back and update `on_receive`:
 ```cpp
 void on_receive(void* event_handler_arg, esp_event_base_t event_base, int32_t event_id, void* event_data) {
     // read one byte
-    char state { USBSerial.read() };
+    char state { Serial.read() };
 
     // guard byte is valid LED state
     if (!(state == LOW || state == HIGH)) {
         // invalid byte received
         // report error
-        USBSerial.write(S_ERR);
+        Serial.write(S_ERR);
         return;
     }
 
     // update LED with valid state
     digitalWrite(LED, state);
-    USBSerial.write(S_OK);
+    Serial.write(S_OK);
 }
 ```
 
