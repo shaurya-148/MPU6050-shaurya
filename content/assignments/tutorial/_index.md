@@ -3,7 +3,7 @@ title: Tutorial
 type: docs
 prev: assignments/full-stack
 weight: 6
-draft: true
+draft: false
 ---
 
 For this assignment you will create a tutorial for the next generation of ECE 196 students.
