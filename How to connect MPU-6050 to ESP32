@@ -1,0 +1,144 @@
+---
+title: My Super Awesome Tutorial
+date: 1970-01-01
+authors:
+  - name: Shaurya Agarwal
+---
+
+![Workshop Logo](assets/fall-detect-logo.png)
+
+# Introduction
+
+In this tutorial you will learn how to connect an MPU-6050 accelerometer/gyroscope sensor to an ESP32 microcontroller, then write Arduino code that reads acceleration data, detects a “fall” event, and triggers an alert (buzzer and IFTTT webhook).
+
+**Motivation:** Fall detection is critical for wearable safety devices. By the end of this workshop, you’ll have a working hardware prototype that senses sudden acceleration spikes (>2.5 g) and notifies you instantly.
+
+**What you’ll gain:**
+- Hands-on experience wiring I²C sensors to an ESP32  
+- Understanding of MPU-6050 registers and data conversion  
+- Writing Arduino code to process 3-axis acceleration and compute vector magnitude  
+- Debouncing logic to avoid false positives  
+- Integrating a buzzer for audible alarm  
+- Sending HTTP requests to IFTTT for cloud notifications  
+
+### Learning Objectives
+
+- Set up Arduino IDE with ESP32 board support  
+- Wire the MPU-6050 sensor to the ESP32’s I²C pins  
+- Configure and read raw accelerometer data via the Wire library  
+- Compute acceleration magnitude and implement a threshold-based fall detector  
+- Drive a buzzer using a GPIO pin and transistor  
+- Connect to an open Wi-Fi network and send HTTP alerts via IFTTT  
+
+---
+
+# Background Information
+
+_… your background text here …_
+
+---
+
+# Getting Started
+
+## Required Components
+
+| Component        | Quantity |
+| ---------------- | -------- |
+| ESP32 Dev Module | 1        |
+| MPU-6050 Module  | 1        |
+| Buzzer (5 V)     | 1        |
+| NPN Transistor   | 1        |
+| 1 kΩ Resistor    | 1        |
+| 4.7 kΩ Resistor  | 2        |
+| 0.1 µF Capacitor | 1        |
+
+_… rest of your prerequisites …_
+
+---
+
+# Part 01: Wiring the MPU-6050
+
+_… wiring instructions …_
+
+---
+
+# Example Code
+
+```cpp
+#include <Wire.h>
+#include <WiFi.h>
+#include <HTTPClient.h>
+#include <math.h>
+
+#define SDA_PIN       15
+#define SCL_PIN       16
+#define MPU_ADDR      0x68
+#define BUZZER_PIN    2
+
+const char* WIFI_SSID   = "UCSD-GUEST";
+const char* IFTTT_EVENT = "Fall_detect";
+const char* IFTTT_KEY   = "nl9wt-ELPgN_2UlnaO6tI2tdpWdldNb-4ruuaaGks1-";
+const float  THRESHOLD_G = 2.5;
+const uint16_t SAMPLE_MS = 100;
+unsigned long lastFall = 0;
+
+void setup() {
+  Serial.begin(115200);
+  pinMode(BUZZER_PIN, OUTPUT);
+  digitalWrite(BUZZER_PIN, LOW);
+  pinMode(LED_BUILTIN, OUTPUT);
+  digitalWrite(LED_BUILTIN, HIGH);
+  delay(200);
+  digitalWrite(LED_BUILTIN, LOW);
+
+  // connect to Wi-Fi
+  WiFi.begin(WIFI_SSID);
+  while (WiFi.status() != WL_CONNECTED) {
+    delay(500);
+    Serial.print('.');
+  }
+  Serial.println(WiFi.localIP());
+
+  // init MPU-6050
+  Wire.begin(SDA_PIN, SCL_PIN);
+  Wire.beginTransmission(MPU_ADDR);
+    Wire.write(0x6B); Wire.write(0x00);
+  Wire.endTransmission(true);
+  Wire.beginTransmission(MPU_ADDR);
+    Wire.write(0x1C); Wire.write(0x10);
+  Wire.endTransmission(true);
+  Wire.beginTransmission(MPU_ADDR);
+    Wire.write(0x1A); Wire.write(0x04);
+  Wire.endTransmission(true);
+}
+
+void loop() {
+  Wire.beginTransmission(MPU_ADDR);
+    Wire.write(0x3B);
+  Wire.endTransmission(false);
+  Wire.requestFrom(MPU_ADDR, 6, true);
+  int16_t axr = (Wire.read()<<8)|Wire.read();
+  int16_t ayr = (Wire.read()<<8)|Wire.read();
+  int16_t azr = (Wire.read()<<8)|Wire.read();
+  float ax = axr/4096.0, ay = ayr/4096.0, az = azr/4096.0;
+  float mag = sqrt(ax*ax + ay*ay + az*az);
+  Serial.printf("Mag=%.2f g\n", mag);
+
+  if (mag > THRESHOLD_G && millis() - lastFall > 1000) {
+    lastFall = millis();
+    Serial.println("Fall detected!");
+    digitalWrite(BUZZER_PIN, HIGH);
+    delay(5000);
+    digitalWrite(BUZZER_PIN, LOW);
+
+    // IFTTT webhook
+    String url = "https://maker.ifttt.com/trigger/" + String(IFTTT_EVENT) +
+                 "/with/key/" + String(IFTTT_KEY);
+    HTTPClient http;
+    http.begin(url);
+    Serial.println(http.GET());
+    http.end();
+  }
+
+  delay(SAMPLE_MS);
+}
